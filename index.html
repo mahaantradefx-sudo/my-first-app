@@ -1,0 +1,19 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>MT Group TSP 6th BN Mdu</title><style>body{margin:0;background:#0f2a4a;color:#fff;font-family:system-ui,sans-serif;display:grid;place-items:center;height:100vh}</style></head><body>Loading...
+<script>
+(function(){
+  var BV='20261017-0900',st=null,tryV=null,ok=null;
+  try{st=localStorage.getItem('dd_app');tryV=localStorage.getItem('dd_try');ok=localStorage.getItem('dd_ok')}catch(e){}
+  var m=st&&st.match(/APPV='(\d{8}-\d{4})'/);
+  try{
+    if(st&&m&&m[1]>BV){
+      if(tryV===m[1]&&ok!==m[1]){localStorage.removeItem('dd_app');location.replace('app.html');return}
+      localStorage.setItem('dd_try',m[1]);
+      document.open();document.write(st);document.close();
+    }else go();
+  }catch(e){go()}
+  function go(){
+    fetch('app.html').then(function(r){if(r.ok)location.replace('app.html');else bad('app.html kidaikkala (HTTP '+r.status+')')}).catch(function(e){location.replace('app.html')});
+  }
+  function bad(t){document.body.innerHTML='<div style="padding:24px;max-width:420px;line-height:1.5"><b>'+t+'</b><br><br>GitHub repo-la <b>app.html</b> upload aagi irukka nu paarunga. Appuram <b>build-apk.yml</b>-la <code>cp app.html www/app.html</code> line irukka nu paarunga. Rendum sariyaa irundhu thirumba build pannunga.</div>'}
+})();
+</script></body></html>
